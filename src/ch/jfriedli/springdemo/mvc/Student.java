@@ -1,5 +1,7 @@
 package ch.jfriedli.springdemo.mvc;
 
+import java.util.LinkedHashMap;
+
 public class Student {
 
 	private String firstName;
@@ -7,7 +9,15 @@ public class Student {
 	
 	private String country;
 	
-	public Student(){}
+	private LinkedHashMap<String, String> countryOptions;
+	
+	public Student(){
+		countryOptions = new LinkedHashMap<>();
+		
+		countryOptions.put("CH", "Switzerland");
+		countryOptions.put("FR", "France");
+		countryOptions.put("DE", "Germany");
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -32,4 +42,9 @@ public class Student {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
+	public LinkedHashMap<String, String> getCountryOptions() {
+		return countryOptions;
+	}
+	
 }
