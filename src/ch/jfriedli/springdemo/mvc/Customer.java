@@ -3,11 +3,15 @@ package ch.jfriedli.springdemo.mvc;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+
 public class Customer {
 	
 	private String firstName;
 	
-	@NotNull()
+	@NotNull(message="is required")
 	@Size(min=1, message="is required")
 	private String lastName;
 
