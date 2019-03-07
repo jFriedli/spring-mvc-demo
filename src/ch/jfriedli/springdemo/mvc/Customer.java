@@ -3,11 +3,8 @@ package ch.jfriedli.springdemo.mvc;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 
 public class Customer {
 	
@@ -20,6 +17,10 @@ public class Customer {
 	@Min(value=0, message="must be greater than or equal to zero")
 	@Max(value=10, message="must be less than or equal to ten")
 	private int freePasses;
+	
+	
+	@Pattern(regexp="^[a-zA-Z0-9]{5}", message="enter a valid postal code")
+	private String postalCode;
 
 	public String getFirstName() {
 		return firstName;
@@ -43,6 +44,14 @@ public class Customer {
 
 	public void setFreePasses(int freePasses) {
 		this.freePasses = freePasses;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 	
 }
