@@ -14,7 +14,7 @@ public class Customer {
 	@Size(min=1, message="is required")
 	private String lastName;
 	
-	//Not null does not work in primitive types (eg. int)
+	//@NotNull doesn't work in primitive types (eg. int)
 	@NotNull(message="is required")
 	@Min(value=0, message="must be greater than or equal to zero")
 	@Max(value=10, message="must be less than or equal to ten")
@@ -23,6 +23,9 @@ public class Customer {
 	
 	@Pattern(regexp="^[a-zA-Z0-9]{5}", message="enter a valid postal code")
 	private String postalCode;
+	
+	@CourseCode(value="COURSE", message="needs to start with COURSE")
+	private String courseCode;
 
 	public String getFirstName() {
 		return firstName;
@@ -54,6 +57,14 @@ public class Customer {
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
+	}
+
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
 	}
 	
 }
